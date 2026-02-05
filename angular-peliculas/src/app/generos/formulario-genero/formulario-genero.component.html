@@ -1,0 +1,15 @@
+<form (submit)="guardarCambios()" [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput [formControl]="form.controls.nombre"/>
+        <mat-error>{{obtenerErrorCampoNombre()}}</mat-error>
+    </mat-form-field>
+    <div class="contenedor-botones">
+        <button mat-flat-button type="submit" 
+        (click)="guardarCambios()"
+        [disabled]="form.invalid">
+        Guardar cambios</button>
+        <a mat-stroked-button routerLink="/genero">Cancelar</a>
+    </div>
+
+</form>
