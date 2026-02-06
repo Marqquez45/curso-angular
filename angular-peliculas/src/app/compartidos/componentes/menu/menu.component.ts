@@ -11,5 +11,4 @@ import { RouterLink } from '@angular/router'
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-
 }

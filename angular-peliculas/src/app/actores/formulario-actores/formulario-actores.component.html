@@ -12,7 +12,9 @@
         <mat-error>{{obtenerErrorCampoFechaNacimiento()}}</mat-error>
     </mat-form-field>
     <div>
-        <app-input-img titulo="foto del actor">
+        <app-input-img
+        [urlImagenActual]="modelo?.foto"
+        titulo="foto del actor" (archivoSeleccionado)="archivoSeleccionado($event)">
 
         </app-input-img>
     </div>

@@ -38,7 +38,8 @@ export class FormularioActoresComponent implements OnInit {
     }],
     fechaNacimiento: new FormControl<Date | null>(null, {
       validators: [Validators.required, fechaNoPuedeSerFutura()]
-    })
+    }),
+    foto: new FormControl<File | string | null> (null)
   })
 
   obtenerErrorCampoNombre() {
@@ -62,13 +63,19 @@ export class FormularioActoresComponent implements OnInit {
     return "";
   }
 
+  archivoSeleccionado(file: File) {
+    this.form.controls.foto.setValue(file);
+  }
+
   guardarCambios() {
     if (!this.form.valid) {
       return;
     }
-
     const actor = this.form.value as ActorCreacionDTO;
     actor.fechaNacimiento = moment(actor.fechaNacimiento).toDate();
+    if (typeof actor.foto === "string") {
+      actor.foto = undefined;
+    }
     this.posterFormulario.emit(actor);
   }
 
