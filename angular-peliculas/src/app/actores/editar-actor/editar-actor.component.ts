@@ -1,21 +1,27 @@
-import { Component, Input, numberAttribute } from '@angular/core';
+import { Component, inject, Input, numberAttribute, OnInit } from '@angular/core';
 import { ActorCreacionDTO, ActorDTO } from '../actores';
 import { FormularioActoresComponent } from "../formulario-actores/formulario-actores.component";
+import { ActoresService } from '../actores.service';
+import { Router } from '@angular/router';
+import { extraerErrores } from '../../compartidos/funciones/extraerErrores';
+import { MostrarErroresComponent } from "../../compartidos/componentes/mostrar-errores/mostrar-errores.component";
+import { CargandoComponent } from "../../compartidos/componentes/cargando/cargando.component";
+import { EditarEntidadComponent } from "../../compartidos/componentes/editar-entidad/editar-entidad.component";
+import { SERVICIO_CRUD_TOKEN } from '../../compartidos/proveedores/proveedores';
 
 @Component({
-  selector: 'app-editar-actor',
-  imports: [FormularioActoresComponent],
-  templateUrl: './editar-actor.component.html',
-  styleUrl: './editar-actor.component.css'
+    selector: 'app-editar-actor',
+    imports: [EditarEntidadComponent],
+    templateUrl: './editar-actor.component.html',
+    styleUrl: './editar-actor.component.css',
+    providers: [
+        { provide: SERVICIO_CRUD_TOKEN, useClass: ActoresService }
+    ]
 })
 export class EditarActorComponent {
   @Input({transform: numberAttribute})
   id!: number;
 
-  actor: ActorDTO = {id: 1, nombre: 'Tom Holland', fechaNacimiento: new Date(1999, 0, 25), foto: 'https://media.vogue.co.uk/photos/68c14fa7250c555b5d7ad32f/2:3/w_2560%2Cc_limit/Prada_25_Prototype_PR%2520Portrait_8_16x9.jpg'};
-
-  guardarCambios(actor: ActorCreacionDTO) {
-    console.log('Editando el actor', actor)
-  }
+  formularioActores = FormularioActoresComponent;
 
 }

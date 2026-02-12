@@ -1,42 +1,39 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export function primeraLetraMayuscula(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
+    return (control: AbstractControl): ValidationErrors | null => {
+        const valor = <string>control.value;
 
-    const valor = <string>control.value ;
+        if (!valor) return null;
+        if (valor.length === 0) return null;
 
-    if (!valor || valor.length === 0) {
-      return null;
-    }
+        const primeraLetra = valor[0];
 
-    const primeraLetra = valor[0];
-
-    if (primeraLetra !== primeraLetra.toUpperCase()) {
-      return {
-        primeraLetraMayuscula: {
-          mensaje: 'La primera letra debe ser mayúscula'
+        if (primeraLetra !== primeraLetra.toUpperCase()){
+            return {
+                primeraLetraMayuscula: {
+                    mensaje: 'La primera letra debe ser mayúscula'
+                }
+            }
         }
-      };
-    }
 
-    return null;
-  };
+        return null;
+    }
 }
 
-
 export function fechaNoPuedeSerFutura(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const fechaEscogidaPorElUsuario = new Date(control.value);
-    const hoy = new Date();
+    return (control: AbstractControl): ValidationErrors | null => {
+        const fechaEscogidaPorElUsuario = new Date(control.value);
+        const hoy = new Date();
 
-    if (fechaEscogidaPorElUsuario > hoy) {
-      return {
-        futuro: {
-          mensaje: 'La fecha no puede ser del futuro'
+        if (fechaEscogidaPorElUsuario > hoy){
+            return {
+                futuro: {
+                    mensaje: 'La fecha no puede ser del futuro'
+                }
+            }
         }
-      }
-    }
 
-    return null;
-  }
+        return null;
+    }
 }

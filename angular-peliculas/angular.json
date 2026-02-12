@@ -24,8 +24,7 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              {
+              }, {
                 "glob": "**/*",
                 "input": "./node_modules/leaflet/dist/images",
                 "output": "assets/"
@@ -34,7 +33,6 @@
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css",
-              "src/styles.scss",
               "./node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": []
@@ -49,8 +47,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
                 }
               ],
               "outputHashing": "all"
@@ -58,7 +56,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -103,6 +107,6 @@
     }
   },
   "cli": {
-    "analytics": "d7ea32de-9ccb-4986-85c7-68ea0d23e0df"
+    "analytics": false
   }
 }

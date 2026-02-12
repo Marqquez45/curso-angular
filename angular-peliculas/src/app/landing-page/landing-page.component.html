@@ -1,5 +1,15 @@
-  <!--<app-rating [maximoRating]="5" (votado)="procesarVoto($event)"></app-rating>-->
-  <h2>En Cines</h2>
-  <app-listado-peliculas [peliculas]="peliculasEnCines"></app-listado-peliculas>
-  <h2>Proximos Estremos</h2>
-  <app-listado-peliculas [peliculas]="peliculasProximosEstrenos"></app-listado-peliculas>
+<div>
+    Estas Autorizado
+</div>
+
+<div>
+    No estas Autorizado
+</div>
+
+<h2>En Cines</h2>
+
+<app-listado-peliculas [peliculas]="peliculasEnCines" (borrado)="peliculaBorrada()"></app-listado-peliculas>
+
+<h2>Próximos Estrenos</h2>
+
+<app-listado-peliculas [peliculas]="peliculasProximosEstrenos" (borrado)="peliculaBorrada()"></app-listado-peliculas>

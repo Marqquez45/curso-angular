@@ -1,56 +1,6 @@
-<!--<h4>Implementacion clasica con *ngFor</h4>
-
-<div *ngFor="let pelicula of peliculas; let indice = index">
-  <p>{{indice}}Pelicula: {{pelicula.titulo | uppercase}}</p>
-  <p>Fecha de lanzamiento: {{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}</p>
-  <p>Precio: {{pelicula.precio | currency}}</p>
-</div>
--->
-
-<!-- <div *ngIf="!peliculas">
-  <img src="https://miro.medium.com/max/882/1*9EBHIOzhE1XfMYoKz1JcsQ.gif"/>
-</div>
-
-<div *ngIf="peliculas?.length === 0">
-  <p>No hay elementos para mostrar</p>
-</div>
-
-
-<div *ngIf="peliculas && peliculas.length > 0">
-  @for (pelicula of peliculas; track $index) {
-    <div class="contenedor-pelicula">
-      <div style="display: flex; flex-direction: row; gap: 10px">
-        <div>
-          <img [ngSrc]="pelicula.poster" [priority]="$index === 0" width="169" height="250">
-        </div>
-        <div>
-          <p>{{$index}}Pelicula: {{pelicula.titulo | uppercase}}</p>
-          <p>Fecha de lanzamiento: {{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}</p>
-          <p>Precio: {{pelicula.precio | currency}}</p>
-        </div>
-      </div>
-    </div>
-  }
-</div>
-
-
-
-
-<button (click)="clickBoton()">Clikeame</button>
-
-<button mat-flat-button class="primary">Primary</button>
-<button mat-flat-button class="secondary">Secondary</button>
-<button mat-flat-button class="warn">Warn</button>
--->
-
-
 <app-menu></app-menu>
 
 
-
-
 <div class="contenedor">
-  <router-outlet>
-    
-  </router-outlet>
+    <router-outlet></router-outlet>
 </div>

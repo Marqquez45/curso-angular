@@ -3,30 +3,28 @@ import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angu
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { OutletContext, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { CineCreacionDTO } from '../cines';
-import { CrearCineComponent } from '../crear-cine/crear-cine.component';
 import { MapaComponent } from "../../compartidos/componentes/mapa/mapa.component";
 import { Coordenada } from '../../compartidos/componentes/mapa/Coordenada';
 
 @Component({
-  selector: 'app-formulario-cines',
-  standalone: true,
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, RouterLink, MapaComponent],
-  templateUrl: './formulario-cines.component.html',
-  styleUrl: './formulario-cines.component.css'
+    selector: 'app-formulario-cines',
+    imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, RouterLink, MapaComponent],
+    templateUrl: './formulario-cines.component.html',
+    styleUrl: './formulario-cines.component.css'
 })
 export class FormularioCinesComponent implements OnInit {
 
   ngOnInit(): void {
-    if (this.modelo !== undefined) {
+    if (this.modelo !== undefined){
       this.form.patchValue(this.modelo);
       this.coordenadasIniciales.push({latitud: this.modelo.latitud, longitud: this.modelo.longitud})
     }
   }
 
   @Input()
-  modelo?: CineCreacionDTO
+  modelo?: CineCreacionDTO;
 
   @Output()
   posteoFormulario = new EventEmitter<CineCreacionDTO>();
@@ -40,29 +38,28 @@ export class FormularioCinesComponent implements OnInit {
     latitud: new FormControl<number | null>(null, [Validators.required]),
     longitud: new FormControl<number | null>(null, [Validators.required])
   })
+
   obtenerErrorCampoNombre(): string {
     let nombre = this.form.controls.nombre;
 
-    if (nombre.hasError('required')) {
+    if (nombre.hasError('required')){
       return "El campo nombre es requerido";
     }
 
     return "";
   }
-  coordenadaSeleccionada(coordenada: Coordenada) {
+
+  coordenadaSeleccionada(coordenada: Coordenada){
     this.form.patchValue(coordenada);
-    console.log(coordenada);
   }
 
-  guardarCambios() {
-    if (!this.form.valid) {
+  guardarCambios(){
+    if (!this.form.valid){
       return;
     }
 
     const cine = this.form.value as CineCreacionDTO;
-
     this.posteoFormulario.emit(cine);
   }
-  
 
 }

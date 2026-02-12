@@ -10,13 +10,22 @@ body {
 form button {
     margin-right: 1rem;
 }
-.contenedor-botones {
-    margin-top: 1rem;
-}
 
 mat-form-field {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     display: block !important;
+    margin-top: 1rem
+}
+
+.contenedor-botones{
     margin-top: 1rem;
+}
+
+.indice-elementos{
+    margin-top: 1rem;
+}
+
+.indice-elementos a{
+    margin-right: 1rem;
 }

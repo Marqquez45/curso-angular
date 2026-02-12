@@ -4,5 +4,5 @@ export function toBase64(file: File): Promise<string> {
         lector.readAsDataURL(file);
         lector.onload = () => resolve(lector.result as string);
         lector.onerror = (error) => reject(error);
-    })
+    });
 }
